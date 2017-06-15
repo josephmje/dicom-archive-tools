@@ -189,8 +189,8 @@ QUERY
 
     my @values = 
       (
-       $self->{studyuid},                 $self->{header}->{pname},           
-       $self->{header}->{pid},            $self->{header}->{birthdate},      
+       $self->{studyuid},                 basename($self->{dcmdir}) =~ s/-[^-]+$//gr,           
+       basename($self->{dcmdir}),         $self->{header}->{birthdate},      
        $self->{header}->{sex},            $self->{header}->{scandate},       
        $self->{header}->{manufacturer},   $self->{header}->{scanner},          
        $self->{header}->{scanner_serial}, $self->{header}->{software},      
@@ -704,9 +704,9 @@ sub format_head {
     format FORMAT_HEADER =
 <STUDY_INFO>
 * Unique Study ID          :    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                                $self->{studyuid},                                
+                                basename($self->{dcmdir}) =~ s/-[^-]+$//gr,                                
 * Patient Name             :    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                                $self->{header}->{pname},
+                                basename($self->{dcmdir}),
 * Patient ID               :    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                                 $self->{header}->{pid},                                
 * Patient date of birth    :    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
